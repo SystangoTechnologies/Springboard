@@ -7,7 +7,7 @@ import com.systango.springboard.service.exception.FaqExistsException;
 import com.systango.springboard.util.AssertUtils;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by Arpit Khandelwal.
@@ -25,20 +25,16 @@ public class AdminServiceImpl implements AdminService {
     public String addFaq(FaqDto faqDto) throws FaqExistsException {
         AssertUtils.notNull(faqDto, faqDto.getQuestion());
 
-        //check for an existing faq and report an error if its already there
-        List<Faq> faqs = faqRepository.findAll();
-        for (Faq faq : faqs) {
-            if (faqDto.getQuestion().equalsIgnoreCase(faq.getQuestion())) {
-                throw new FaqExistsException();
-            }
+        Optional<Faq> faq = Optional.ofNullable(faqRepository.findByQuestion(faqDto.getQuestion()));
+        if (faq.isPresent()) {
+            throw new FaqExistsException();
+        } else {
+            //persist the new faq
+            Faq newFaq = new Faq()
+                    .setQuestion(faqDto.getQuestion())
+                    .setAnswer(faqDto.getAnswer());
+            faqRepository.save(newFaq);
         }
-
-        //persist the new faq
-        Faq newFaq = new Faq()
-                .setQuestion(faqDto.getQuestion())
-                .setAnswer(faqDto.getAnswer());
-        faqRepository.save(newFaq);
-
         return "FAQ added successfully";
     }
 }
