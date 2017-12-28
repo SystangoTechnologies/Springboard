@@ -34,7 +34,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
                 .authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/", "/resources/static/**").permitAll()
-                .antMatchers("/css/**", "/js/**", "/img/**", "**/favicon.ico").permitAll()
+                .antMatchers("/css/**", "/js/**", "/img/**", "/favicon.ico").permitAll()
                 .antMatchers(HttpMethod.POST, SIGN_UP_URL).permitAll()
                 .anyRequest().authenticated()
                 .and()
