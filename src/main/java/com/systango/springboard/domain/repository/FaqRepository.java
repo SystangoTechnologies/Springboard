@@ -15,5 +15,13 @@ public interface FaqRepository extends CrudRepository<Faq, Long> {
     @Override
     List<Faq> findAll();
 
+    /**
+     * Find a FAQ using the question string.
+     *
+     * @param question
+     * @return
+     */
+    Faq findByQuestion(String question);
+
 }
 
