@@ -1,5 +1,13 @@
-Steps to create the Database in Postgressql-
-*CREATE ROLE springboarduser WITH LOGIN PASSWORD 'springboard';
-*ALTER ROLE springboarduser CREATEDB; 
-*CREATE DATABASE springboard_db;
-*GRANT ALL PRIVILEGES ON DATABASE springboard_db TO springboarduser;
+## Springboard
+Production ready maven based Spring Boot starter kit application.
+
+## Description
+
+## Technology
+
+## Application Structure
+
+## Running the server locally
+
+## Contributors
+[Arpit Khandelwal](https://www.linkedin.com/in/arpitkhandelwal1984/)
