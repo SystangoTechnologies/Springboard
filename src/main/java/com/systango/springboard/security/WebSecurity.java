@@ -33,7 +33,7 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                 .and()
                 .csrf().disable()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/", "/resources/static/**").permitAll()
+                .antMatchers(HttpMethod.GET, "/", "/resources/static/**", "/v2/api-docs", "/swagger-ui.html", "/webjars/springfox-swagger-ui/**", "/swagger-resources/**").permitAll()
                 .antMatchers("/css/**", "/js/**", "/img/**", "/favicon.ico").permitAll()
                 .antMatchers(HttpMethod.POST, SIGN_UP_URL).permitAll()
                 .anyRequest().authenticated()

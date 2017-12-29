@@ -16,6 +16,7 @@ Starter kit for jump starting the development of a API oriented spring based Jav
 - **Thymeleaf** - Template Engine
 - **Devtools** - Support Hot-Code Swapping with live browser reload
 - **JJWT** - JWT tokens for API authentication
+- **Swagger** - In-built swagger documentation support
 
 
 ## Application Structure
@@ -61,6 +62,13 @@ Starter kit for jump starting the development of a API oriented spring based Jav
 
 ## Running the server locally
 The pom.xml can be configured to generate a WAR or standalone executable jar file as well. We suggest developers should use JAR in the development environment as the hot swapping and live reload features in Spring Boot are compatible with it and for production deployment WAR packaging should be used with standalone Tomcat (or any other servlet container) server.
+
+## Swagger Documentation
+Swagger documentation is in-built in this starter-kit and can be accessed at the following URL -
+````
+http://<host-name>:8090/swagger-ui.html
+````
+The configuration for swagger are driven via <b>com.systango.springboard.util.SwaggerConfig.java</b> class that at present shows all the apis listed under the <b>"com.systango.springboard.api.*"</b>package.
 
 ## Contributors
 [Arpit Khandelwal](https://www.linkedin.com/in/arpitkhandelwal1984/)
