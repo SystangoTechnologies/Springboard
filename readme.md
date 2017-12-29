@@ -69,7 +69,7 @@ Swagger documentation is in-built in this starter-kit and can be accessed at the
 http://<host-name>:8090/swagger-ui.html
 ````
 The configuration for swagger are driven via <b>com.systango.springboard.util.SwaggerConfig.java</b> class that at present shows all the apis listed under the <b>"com.systango.springboard.api.*"</b>package.
-The JWT token should be presented inside the <b>value</b>input box as <b>"Bearer token_goes_here"</b>. The authorization header for the REST APIs should be as follows -
+The JWT token should be presented inside the <b>value</b> input box as <b>"Bearer token_goes_here"</b>. The authorization header for the REST APIs should be as follows -
 ````
 curl -X GET \
   http://localhost:8090/v1/about/faq \
