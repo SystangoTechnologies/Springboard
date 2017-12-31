@@ -16,6 +16,9 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import static com.systango.springboard.security.SecurityConstants.SIGN_UP_URL;
 
 
+/**
+ * Created by Arpit Khandelwal.
+ */
 @EnableWebSecurity
 public class WebSecurity extends WebSecurityConfigurerAdapter {
     private UserDetailsService userDetailsService;
@@ -28,23 +31,29 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        //@formatter:off
         http
                 .cors()
                 .and()
-                .csrf().disable()
+                .csrf()
+                    .disable()
                 .authorizeRequests()
-                //Swagger exceptions
-                .antMatchers(HttpMethod.GET, "/v2/api-docs", "/configuration/ui", "/configuration/security", "/swagger-ui.html", "/webjars/**", "/swagger-resources/**", "/swagge‌​r-ui.html").permitAll()
-                //Static resources exception
-                .antMatchers(HttpMethod.GET, "/", "/resources/static/**", "/css/**", "/js/**", "/img/**", "/favicon.ico").permitAll()
-                //Sign-up API exception
-                .antMatchers(HttpMethod.POST, SIGN_UP_URL).permitAll()
-                .anyRequest().authenticated()
+                    //Swagger exceptions
+                    .antMatchers(HttpMethod.GET, "/v2/api-docs", "/configuration/ui", "/configuration/security", "/swagger-ui.html", "/webjars/**", "/swagger-resources/**", "/swagge‌​r-ui.html")
+                    .permitAll()
+                    //Static resources exception
+                    .antMatchers(HttpMethod.GET, "/", "/resources/static/**", "/css/**", "/js/**", "/img/**", "/favicon.ico")
+                    .permitAll()
+                    //Sign-up API exception
+                    .antMatchers(HttpMethod.POST, SIGN_UP_URL)
+                    .permitAll()
+                    .anyRequest().authenticated()
                 .and()
                 .addFilter(new JWTAuthenticationFilter(authenticationManager()))
                 .addFilter(new JWTAuthorizationFilter(authenticationManager()))
                 // this disables session creation on Spring Security
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+        //@formatter:on
     }
 
     @Override
