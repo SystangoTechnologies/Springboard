@@ -1,8 +1,11 @@
 package com.systango.springboard.security;
 
+import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.www.BasicAuthenticationFilter;
 
@@ -43,16 +46,25 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
         String token = request.getHeader(HEADER_STRING);
         if (token != null) {
             // parse the token.
-            String user = Jwts.parser()
+            Claims claims = Jwts.parser()
                     .setSigningKey(SECRET.getBytes())
                     .parseClaimsJws(token.replace(TOKEN_PREFIX, ""))
-                    .getBody()
-                    .getSubject();
-
-            if (user != null) {
-                return new UsernamePasswordAuthenticationToken(user, null, new ArrayList<>());
+                    .getBody();
+            // Extract the UserName
+            String user = claims.getSubject();
+            // Extract the Roles
+            ArrayList<String> roles = (ArrayList<String>) claims.get("roles");
+            // Then convert Roles to GrantedAuthority Object for injecting
+            ArrayList<GrantedAuthority> list = new ArrayList<>();
+            if (roles != null) {
+                for (String a : roles) {
+                    GrantedAuthority g = new SimpleGrantedAuthority(a);
+                    list.add(g);
+                }
             }
-            return null;
+            if (user != null) {
+                return new UsernamePasswordAuthenticationToken(user, null, list);
+            }
         }
         return null;
     }
