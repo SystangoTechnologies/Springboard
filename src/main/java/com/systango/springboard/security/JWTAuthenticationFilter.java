@@ -38,13 +38,22 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     public Authentication attemptAuthentication(HttpServletRequest req,
                                                 HttpServletResponse res) throws AuthenticationException {
         try {
-            ApplicationUser creds = new ObjectMapper()
-                    .readValue(req.getInputStream(), ApplicationUser.class);
+            ApplicationUser user;
+            String username = req.getParameter("username");
+            String password = req.getParameter("password");
+            // A small hack to test if the request is sent from web form or api json post
+            if (username != null && password != null) {
+                // This indicates request was sent from the web view
+                user = new ApplicationUser().setUsername(username).setPassword(password);
+            } else {
+                // This indicates request was sent as JSON data
+                user = new ObjectMapper().readValue(req.getInputStream(), ApplicationUser.class);
+            }
 
             return authenticationManager.authenticate(
                     new UsernamePasswordAuthenticationToken(
-                            creds.getUsername(),
-                            creds.getPassword(),
+                            user.getUsername(),
+                            user.getPassword(),
                             new ArrayList<>())
             );
         } catch (IOException e) {
