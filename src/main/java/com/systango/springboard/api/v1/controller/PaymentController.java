@@ -2,12 +2,12 @@ package com.systango.springboard.api.v1.controller;
 
 import com.systango.springboard.api.v1.request.WalletRequest;
 import com.systango.springboard.dto.model.payment.WalletDto;
+import com.systango.springboard.dto.response.Response;
+import com.systango.springboard.mapper.WalletMapper;
 import com.systango.springboard.service.exception.PaymentException;
 import com.systango.springboard.service.payment.PaymentService;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 
@@ -31,4 +31,10 @@ public class PaymentController {
                 .setWalletLevel(walletRequest.getWalletLevel());
         paymentService.createUsersWallet(walletDto);
     }
+
+    @GetMapping(value = "/wallet/{username}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public Response getWalletDetails(@PathVariable String username) throws PaymentException {
+        return Response.ok().setPayload(WalletMapper.mapWallet(paymentService.getWalletDetails(username)));
+    }
+
 }

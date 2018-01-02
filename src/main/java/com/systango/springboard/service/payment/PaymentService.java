@@ -10,6 +10,15 @@ import com.systango.springboard.service.exception.PaymentException;
 public interface PaymentService {
 
     /**
+     * Get a user's wallet details.
+     *
+     * @param userName
+     * @return
+     * @throws PaymentException
+     */
+    WalletDetails getWalletDetails(String userName) throws PaymentException;
+
+    /**
      * Create a new wallet for the user with given id
      *
      * @param walletDto

@@ -4,7 +4,7 @@ import com.systango.springboard.domain.model.payment.WalletDetails;
 import com.systango.springboard.domain.model.payment.WalletLevel;
 import com.systango.springboard.dto.model.user.UserDto;
 import com.systango.springboard.service.exception.PaymentException;
-import com.systango.springboard.service.exception.UserExistsException;
+import com.systango.springboard.service.exception.UserException;
 
 /**
  * Created by Arpit Khandelwal.
@@ -15,9 +15,9 @@ public interface UserService {
      *
      * @param userDto
      * @return
-     * @throws UserExistsException
+     * @throws UserException
      */
-    String addUser(UserDto userDto) throws UserExistsException;
+    String addUser(UserDto userDto) throws UserException;
 
     /**
      * Create a new wallet for the given user.

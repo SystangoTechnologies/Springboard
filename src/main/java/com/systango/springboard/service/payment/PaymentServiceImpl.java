@@ -29,6 +29,36 @@ public class PaymentServiceImpl implements PaymentService {
         this.walletRepository = walletRepository;
     }
 
+    /**
+     * Returns the wallet details of specified user
+     *
+     * @param userName
+     * @return
+     * @throws PaymentException
+     */
+    @Override
+    @Transactional
+    public WalletDetails getWalletDetails(String userName) throws PaymentException {
+        Optional<ApplicationUser> user = Optional.ofNullable(userRepository.findByUsername(userName));
+        if (user.isPresent()) {
+            Optional<WalletDetails> wallet = Optional.ofNullable(walletRepository.findByApplicationUser_Id(user.get().getId()));
+            if (wallet.isPresent()) {
+                return wallet.get();
+            } else {
+                throw new PaymentException(String.format("Requested user - '%s' doesn't have a wallet yet", userName));
+            }
+        } else {
+            throw new PaymentException(String.format("Requested user - '%s'doesn 't exist.", userName));
+        }
+    }
+
+    /**
+     * Create a new User Wallet
+     *
+     * @param walletDto
+     * @return
+     * @throws PaymentException
+     */
     @Override
     @Transactional
     public WalletDetails createUsersWallet(WalletDto walletDto) throws PaymentException {
@@ -43,7 +73,7 @@ public class PaymentServiceImpl implements PaymentService {
             return walletDetails;
         } else {
             LOGGER.debug("User with username :'{}' doesn't exist", walletDto.getUserName());
-            throw new PaymentException();
+            throw new PaymentException(String.format("User with username :'%s' doesn't exist", walletDto.getUserName()));
         }
     }
 }

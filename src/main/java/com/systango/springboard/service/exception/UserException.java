@@ -3,12 +3,13 @@ package com.systango.springboard.service.exception;
 /**
  * Created by Arpit Khandelwal.
  */
-public class PaymentException extends Exception {
-    public PaymentException(String message) {
+public class UserException extends Exception {
+
+    public UserException(String message) {
         super(message);
     }
 
-    public PaymentException(Throwable throwable) {
+    public UserException(Throwable throwable) {
         super(throwable);
     }
 }

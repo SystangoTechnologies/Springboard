@@ -1,7 +1,7 @@
 package com.systango.springboard.service.admin;
 
 import com.systango.springboard.dto.model.FaqDto;
-import com.systango.springboard.service.exception.FaqExistsException;
+import com.systango.springboard.service.exception.AdminException;
 
 /**
  * Created by Arpit Khandelwal.
@@ -15,5 +15,5 @@ public interface AdminService {
      * @param faqDto
      * @return confirmation message
      */
-    String addFaq(FaqDto faqDto) throws FaqExistsException;
+    String addFaq(FaqDto faqDto) throws AdminException;
 }
