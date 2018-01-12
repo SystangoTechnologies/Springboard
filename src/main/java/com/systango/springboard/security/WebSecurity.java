@@ -46,6 +46,8 @@ public class WebSecurity extends WebSecurityConfigurerAdapter {
                     //Static resources exception
                     .antMatchers(HttpMethod.GET, "/", "/resources/static/**", "/css/**", "/js/**", "/img/**", "/favicon.ico")
                     .permitAll()
+                    .antMatchers(HttpMethod.GET, "/manage/**")
+                    .permitAll()
                     //Sign-up API exception
                     .antMatchers(HttpMethod.POST, SIGN_UP_URL)
                     .permitAll()
