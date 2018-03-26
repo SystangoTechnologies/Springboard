@@ -9,6 +9,8 @@ import com.systango.springboard.service.exception.PaymentException;
 import com.systango.springboard.util.AssertUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
@@ -16,6 +18,7 @@ import java.util.Optional;
 /**
  * Created by Arpit Khandelwal.
  */
+@Component
 public class PaymentServiceImpl implements PaymentService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PaymentServiceImpl.class);
@@ -24,6 +27,7 @@ public class PaymentServiceImpl implements PaymentService {
 
     private final WalletRepository walletRepository;
 
+    @Autowired
     public PaymentServiceImpl(ApplicationUserRepository userRepository, WalletRepository walletRepository) {
         this.userRepository = userRepository;
         this.walletRepository = walletRepository;

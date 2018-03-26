@@ -7,6 +7,8 @@ import com.systango.springboard.service.exception.AdminException;
 import com.systango.springboard.util.AssertUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
@@ -14,11 +16,13 @@ import java.util.Optional;
 /**
  * Created by Arpit Khandelwal.
  */
+@Component
 public class AdminServiceImpl implements AdminService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AdminServiceImpl.class);
     private final FaqRepository faqRepository;
 
+    @Autowired
     public AdminServiceImpl(FaqRepository faqRepository) {
         this.faqRepository = faqRepository;
     }

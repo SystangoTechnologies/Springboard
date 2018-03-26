@@ -10,6 +10,8 @@ import com.systango.springboard.service.exception.PaymentException;
 import com.systango.springboard.service.exception.UserException;
 import com.systango.springboard.service.payment.PaymentService;
 import com.systango.springboard.util.AssertUtils;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
@@ -17,6 +19,7 @@ import java.util.Optional;
 /**
  * Created by Arpit Khandelwal.
  */
+@Component
 public class UserServiceImpl implements UserService {
 
     private final ApplicationUserRepository userRepository;
@@ -26,6 +29,7 @@ public class UserServiceImpl implements UserService {
     /**
      * @param userRepository
      */
+    @Autowired
     public UserServiceImpl(ApplicationUserRepository userRepository) {
         this.userRepository = userRepository;
     }
