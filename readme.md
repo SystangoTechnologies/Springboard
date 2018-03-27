@@ -105,7 +105,7 @@ docker run -p 8090:8090 springboard
    ````
    
 ## Unit test cases
-Springboard comes with a handy set of unit test cases present in the 'SpringboardApplicationTests' class inside the test directory. The test cases are based on the fact that spring security is applied, the first thing you should do before accessing a protected url in the application is obtain a valid JWT token using the utility method provided in the test suite. Once you have the valid token, any protected url could be unite tested without any issues.
+Springboard comes with a handy set of unit test cases present in the 'SpringboardApplicationTests' class inside the test directory. The test cases are based on the fact that spring security is applied, the first thing you should do before accessing a protected url in the application is obtain a valid JWT token using the utility method provided in the test suite. Once you have the valid token, any protected url could be unit tested without any issues.
 
 ## Swagger Documentation
 Swagger documentation is in-built in this starter-kit and can be accessed at the following URL -
