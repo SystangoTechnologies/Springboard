@@ -1,4 +1,4 @@
-![Springboard](https://github.com/SystangoTechnologies/Springboard/blob/master/src/main/resources/static/img/springboard-logo.jpg)
+![Springboard](https://github.com/SystangoTechnologies/Springboard/blob/master/src/main/resources/static/img/springboard-logo.png)
 
 ## Springboard
 Production ready maven based Spring Boot starter kit application.
