@@ -64,7 +64,7 @@ Starter kit for jump starting the development of a API oriented spring based Jav
 
 ````
 
-##Database Migrations
+## Database Migrations
 **Flyway** library is integrated to manage database migrations. The migration files have to be kept in ``src/main/resources/db/migration`` folder. There are sample migrations present here to depict file name patterns. Flyway will create a table in the database to manage the schema version files.
 
 ## Running the server locally
