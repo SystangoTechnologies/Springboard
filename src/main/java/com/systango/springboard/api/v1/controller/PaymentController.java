@@ -6,7 +6,10 @@ import com.systango.springboard.dto.response.Response;
 import com.systango.springboard.mapper.WalletMapper;
 import com.systango.springboard.service.exception.PaymentException;
 import com.systango.springboard.service.payment.PaymentService;
+
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -25,15 +28,16 @@ public class PaymentController {
     }
 
     @PostMapping("/registerwallet")
-    public void registerWallet(@RequestBody @Valid WalletRequest walletRequest) throws PaymentException {
+    public ResponseEntity<Object> registerWallet(@RequestBody @Valid WalletRequest walletRequest) throws PaymentException {
         WalletDto walletDto = new WalletDto()
                 .setUserName(walletRequest.getUsername())
                 .setWalletLevel(walletRequest.getWalletLevel());
         paymentService.createUsersWallet(walletDto);
+        return new ResponseEntity<Object>(HttpStatus.CREATED);
     }
 
     @GetMapping(value = "/wallet/{username}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Response getWalletDetails(@PathVariable String username) throws PaymentException {
+    public Response<Object> getWalletDetails(@PathVariable String username) throws PaymentException {
         return Response.ok().setPayload(WalletMapper.mapWallet(paymentService.getWalletDetails(username)));
     }
 

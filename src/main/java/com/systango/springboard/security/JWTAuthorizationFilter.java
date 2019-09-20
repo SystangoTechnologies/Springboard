@@ -53,7 +53,8 @@ public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
             // Extract the UserName
             String user = claims.getSubject();
             // Extract the Roles
-            ArrayList<String> roles = (ArrayList<String>) claims.get("roles");
+            @SuppressWarnings("unchecked")
+			ArrayList<String> roles = (ArrayList<String>) claims.get("roles");
             // Then convert Roles to GrantedAuthority Object for injecting
             ArrayList<GrantedAuthority> list = new ArrayList<>();
             if (roles != null) {

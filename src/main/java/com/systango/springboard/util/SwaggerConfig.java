@@ -34,8 +34,8 @@ public class SwaggerConfig {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder().title("SPRINGBOARD APIs")
                 .description("The REST API documentation for springboard project.").termsOfServiceUrl("")
-                .contact(new Contact("Arpit Khandelwal", "", "engineering@systango.com"))
-                .version("0.0.1")
+                .contact(new Contact("Pallav Boonlia", "https://www.systango.com/contact", "pallav@systango.com"))
+                .version("1.0.1")
                 .build();
     }
 

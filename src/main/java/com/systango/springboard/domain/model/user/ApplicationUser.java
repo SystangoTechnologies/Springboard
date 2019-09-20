@@ -1,5 +1,6 @@
 package com.systango.springboard.domain.model.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.systango.springboard.domain.model.BaseDomainObject;
 import com.systango.springboard.domain.model.payment.WalletDetails;
 import lombok.Getter;
@@ -17,6 +18,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @Accessors(chain = true)
+@JsonIgnoreProperties (ignoreUnknown=true)
 @Entity
 public class ApplicationUser extends BaseDomainObject {
 

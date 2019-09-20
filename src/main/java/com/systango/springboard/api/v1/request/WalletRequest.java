@@ -1,12 +1,14 @@
 package com.systango.springboard.api.v1.request;
 
+import javax.validation.constraints.NotEmpty;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.systango.springboard.domain.model.payment.WalletLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-import org.hibernate.validator.constraints.NotEmpty;
+
 
 /**
  * Created by Arpit Khandelwal.

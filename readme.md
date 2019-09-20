@@ -54,6 +54,8 @@ Starter kit for jump starting the development of a API oriented spring based Jav
 | | | | |____img
 | | | | |____js
 | | | |____templates
+| | | |____db
+| | | | |____migration
 | |____test
 | | |____java
 | | | |____com
@@ -61,6 +63,9 @@ Starter kit for jump starting the development of a API oriented spring based Jav
 | | | | | |____springboard
 
 ````
+
+##Database Migrations
+**Flyway** library is integrated to manage database migrations. The migration files have to be kept in ``src/main/resources/db/migration`` folder. There are sample migrations present here to depict file name patterns. Flyway will create a table in the database to manage the schema version files.
 
 ## Running the server locally
 The pom.xml can be configured to generate a WAR or standalone executable jar file as well. We suggest developers should use JAR in the development environment as the hot swapping and live reload features in Spring Boot are compatible with it and for production deployment WAR packaging should be used with standalone Tomcat (or any other servlet container) server.
@@ -123,6 +128,7 @@ curl -X GET \
 
 ## Contributors
 [Arpit Khandelwal](https://www.linkedin.com/in/arpitkhandelwal1984/)
+[Sumit Singhal](https://www.linkedin.com/in/s-singhal/)
 
 ## License
 This project is licensed under the terms of the MIT license.

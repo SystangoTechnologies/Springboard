@@ -29,22 +29,22 @@ public class AboutController {
     }
 
     @GetMapping(value = "/faq", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Response getFaq() {
+    public Response<Object> getFaq() {
         return Response.ok().setPayload(FaqMapper.mapFaqs(faqRepository.findAll()));
     }
 
     @GetMapping(value = "/terms-and-conditions", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Response getTermsAndConditions() {
+    public Response<Object> getTermsAndConditions() {
         return Response.ok().setPayload(settingsRepository.findTermsAndConditions().getSettingValue());
     }
 
     @GetMapping(value = "/privacy-policy", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Response getPrivacyPolicy() {
+    public Response<Object> getPrivacyPolicy() {
         return Response.ok().setPayload(settingsRepository.findPrivacyPolicy().getSettingValue());
     }
 
     @GetMapping(value = "/about-us", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Response getAboutUs() {
+    public Response<Object> getAboutUs() {
         return Response.ok().setPayload(settingsRepository.findAbout().getSettingValue());
     }
 

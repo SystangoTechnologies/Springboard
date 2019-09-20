@@ -18,7 +18,6 @@ import javax.persistence.Entity;
 public class Settings extends BaseDomainObject {
 
     private String settingKey;
-    private String settingName;
     private String settingValue;
 
 }

@@ -32,7 +32,7 @@ public class AdminController {
 
     @PostMapping(path = "/add-faq", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     @PreAuthorize("hasAuthority('ROLE_ADMIN')")
-    public Response addFaq(@RequestBody @Valid AddFaqRequest addFaqRequest) throws AdminException {
+    public Response<Object> addFaq(@RequestBody @Valid AddFaqRequest addFaqRequest) throws AdminException {
         FaqDto faqDto = new FaqDto()
                 .setQuestion(addFaqRequest.getQuestion())
                 .setAnswer(addFaqRequest.getAnswer());
