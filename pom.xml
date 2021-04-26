@@ -25,7 +25,7 @@
         <jsonwebtoken.version>0.9.1</jsonwebtoken.version>
         <springfox.swagger.version>2.9.2</springfox.swagger.version>
         <springfox.swagger.ui.version>2.9.2</springfox.swagger.ui.version>
-        <commons.io.version>2.6</commons.io.version>
+        <commons.io.version>2.7</commons.io.version>
     </properties>
 
     <dependencies>
